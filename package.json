@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/nkiermaier/nick_ecommerce#readme",
   "dependencies": {
+    "mongodb": "^2.2.10",
+    "mongoose": "^4.6.2",
     "stripe": "^4.11.0"
   }
 }

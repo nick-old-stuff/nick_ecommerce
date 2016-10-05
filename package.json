@@ -1,0 +1,22 @@
+{
+  "name": "nick_ecommerce",
+  "version": "1.0.0",
+  "description": "Ecommerce library",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkiermaier/nick_ecommerce.git"
+  },
+  "author": "Nick Kiermaier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nkiermaier/nick_ecommerce/issues"
+  },
+  "homepage": "https://github.com/nkiermaier/nick_ecommerce#readme",
+  "dependencies": {
+    "stripe": "^4.11.0"
+  }
+}

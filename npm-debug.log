@@ -1,0 +1,121 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'http://github.com/nkiermaier/nick_ecommerce.git',
+1 verbose cli   '--save' ]
+2 info using npm@3.10.3
+3 info using node@v6.6.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData http://github.com/nkiermaier/nick_ecommerce.git
+8 silly fetchOtherPackageData http://github.com/nkiermaier/nick_ecommerce.git
+9 silly cache add args [ 'http://github.com/nkiermaier/nick_ecommerce.git', null ]
+10 verbose cache add spec http://github.com/nkiermaier/nick_ecommerce.git
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'http://github.com/nkiermaier/nick_ecommerce.git',
+11 silly cache add   scope: null,
+11 silly cache add   escapedName: null,
+11 silly cache add   name: null,
+11 silly cache add   rawSpec: 'http://github.com/nkiermaier/nick_ecommerce.git',
+11 silly cache add   spec: 'git+ssh://git@github.com/nkiermaier/nick_ecommerce.git',
+11 silly cache add   type: 'hosted',
+11 silly cache add   hosted:
+11 silly cache add    { type: 'github',
+11 silly cache add      ssh: 'git@github.com:nkiermaier/nick_ecommerce.git',
+11 silly cache add      sshUrl: 'git+ssh://git@github.com/nkiermaier/nick_ecommerce.git',
+11 silly cache add      httpsUrl: 'git+https://github.com/nkiermaier/nick_ecommerce.git',
+11 silly cache add      gitUrl: 'git://github.com/nkiermaier/nick_ecommerce.git',
+11 silly cache add      shortcut: 'github:nkiermaier/nick_ecommerce',
+11 silly cache add      directUrl: 'https://raw.githubusercontent.com/nkiermaier/nick_ecommerce/master/package.json' } }
+12 verbose addRemoteGit caching http://github.com/nkiermaier/nick_ecommerce.git
+13 verbose addRemoteGit git+ssh://git@github.com/nkiermaier/nick_ecommerce.git is a repository hosted by github
+14 silly tryClone cloning git+ssh://git@github.com/nkiermaier/nick_ecommerce.git via git+ssh://git@github.com/nkiermaier/nick_ecommerce.git
+15 verbose tryClone git-ssh-git-github-com-nkiermaier-nick-ecommerce-git-37de1a52 not in flight; caching
+16 verbose correctMkdir /home/nick/.npm/_git-remotes correctMkdir not in flight; initializing
+17 info git [ 'clone',
+17 info git   '--template=/home/nick/.npm/_git-remotes/_templates',
+17 info git   '--mirror',
+17 info git   'ssh://git@github.com/nkiermaier/nick_ecommerce.git',
+17 info git   '/home/nick/.npm/_git-remotes/git-ssh-git-github-com-nkiermaier-nick-ecommerce-git-37de1a52' ]
+18 verbose mirrorRemote git+ssh://git@github.com/nkiermaier/nick_ecommerce.git git clone ssh://git@github.com/nkiermaier/nick_ecommerce.git
+19 verbose correctMkdir /home/nick/.npm/_git-remotes correctMkdir not in flight; initializing
+20 verbose setPermissions git+ssh://git@github.com/nkiermaier/nick_ecommerce.git set permissions on /home/nick/.npm/_git-remotes/git-ssh-git-github-com-nkiermaier-nick-ecommerce-git-37de1a52
+21 verbose resolveHead git+ssh://git@github.com/nkiermaier/nick_ecommerce.git original treeish: master
+22 info git [ 'rev-list', '-n1', 'master' ]
+23 silly resolveHead git+ssh://git@github.com/nkiermaier/nick_ecommerce.git resolved treeish: 5dfafacd6dc78de030359a9298a082969f04801d
+24 verbose resolveHead git+ssh://git@github.com/nkiermaier/nick_ecommerce.git resolved Git URL: git+ssh://git@github.com/nkiermaier/nick_ecommerce.git#5dfafacd6dc78de030359a9298a082969f04801d
+25 silly resolveHead Git working directory: /tmp/npm-5040-45b34e25/git-cache-91567d0e/5dfafacd6dc78de030359a9298a082969f04801d
+26 info git [ 'clone',
+26 info git   '/home/nick/.npm/_git-remotes/git-ssh-git-github-com-nkiermaier-nick-ecommerce-git-37de1a52',
+26 info git   '/tmp/npm-5040-45b34e25/git-cache-91567d0e/5dfafacd6dc78de030359a9298a082969f04801d' ]
+27 verbose cloneResolved git+ssh://git@github.com/nkiermaier/nick_ecommerce.git clone Cloning into '/tmp/npm-5040-45b34e25/git-cache-91567d0e/5dfafacd6dc78de030359a9298a082969f04801d'...
+27 verbose cloneResolved done.
+28 info git [ 'checkout', '5dfafacd6dc78de030359a9298a082969f04801d' ]
+29 verbose checkoutTreeish git+ssh://git@github.com/nkiermaier/nick_ecommerce.git checkout Note: checking out '5dfafacd6dc78de030359a9298a082969f04801d'.
+29 verbose checkoutTreeish
+29 verbose checkoutTreeish You are in 'detached HEAD' state. You can look around, make experimental
+29 verbose checkoutTreeish changes and commit them, and you can discard any commits you make in this
+29 verbose checkoutTreeish state without impacting any branches by performing another checkout.
+29 verbose checkoutTreeish
+29 verbose checkoutTreeish If you want to create a new branch to retain commits you create, you may
+29 verbose checkoutTreeish do so (now or later) by using -b with the checkout command again. Example:
+29 verbose checkoutTreeish
+29 verbose checkoutTreeish   git checkout -b <new-branch-name>
+29 verbose checkoutTreeish
+29 verbose checkoutTreeish HEAD is now at 5dfafac... upd
+30 info git [ 'submodule', '-q', 'update', '--init', '--recursive' ]
+31 verbose updateSubmodules git+ssh://git@github.com/nkiermaier/nick_ecommerce.git submodule update
+32 verbose addLocalDirectory /home/nick/.npm/nick_ecommerce/1.0.0/package.tgz not in flight; packing
+33 verbose correctMkdir /home/nick/.npm correctMkdir not in flight; initializing
+34 verbose tar pack [ '/home/nick/.npm/nick_ecommerce/1.0.0/package.tgz',
+34 verbose tar pack   '/tmp/npm-5040-45b34e25/git-cache-91567d0e/5dfafacd6dc78de030359a9298a082969f04801d' ]
+35 verbose tarball /home/nick/.npm/nick_ecommerce/1.0.0/package.tgz
+36 verbose folder /tmp/npm-5040-45b34e25/git-cache-91567d0e/5dfafacd6dc78de030359a9298a082969f04801d
+37 verbose addLocalTarball adding from inside cache /home/nick/.npm/nick_ecommerce/1.0.0/package.tgz
+38 verbose correctMkdir /home/nick/.npm correctMkdir not in flight; initializing
+39 verbose addRemoteGit data._from: git+ssh://git@github.com/nkiermaier/nick_ecommerce.git
+40 verbose addRemoteGit data._resolved: git+ssh://git@github.com/nkiermaier/nick_ecommerce.git#5dfafacd6dc78de030359a9298a082969f04801d
+41 silly cache afterAdd nick_ecommerce@1.0.0
+42 verbose afterAdd /home/nick/.npm/nick_ecommerce/1.0.0/package/package.json not in flight; writing
+43 verbose correctMkdir /home/nick/.npm correctMkdir not in flight; initializing
+44 verbose afterAdd /home/nick/.npm/nick_ecommerce/1.0.0/package/package.json written
+45 silly install normalizeTree
+46 silly loadCurrentTree Finishing
+47 silly loadIdealTree Starting
+48 silly install loadIdealTree
+49 silly cloneCurrentTree Starting
+50 silly install cloneCurrentTreeToIdealTree
+51 silly cloneCurrentTree Finishing
+52 silly loadShrinkwrap Starting
+53 silly install loadShrinkwrap
+54 silly loadShrinkwrap Finishing
+55 silly loadAllDepsIntoIdealTree Starting
+56 silly install loadAllDepsIntoIdealTree
+57 silly rollbackFailedOptional Starting
+58 silly rollbackFailedOptional Finishing
+59 silly runTopLevelLifecycles Starting
+60 silly runTopLevelLifecycles Finishing
+61 silly install printInstalled
+62 verbose stack Error: Refusing to install nick_ecommerce as a dependency of itself
+62 verbose stack     at checkSelf (/usr/lib/node_modules/npm/lib/install/validate-args.js:53:14)
+62 verbose stack     at Array.<anonymous> (/usr/lib/node_modules/npm/node_modules/slide/lib/bind-actor.js:15:8)
+62 verbose stack     at LOOP (/usr/lib/node_modules/npm/node_modules/slide/lib/chain.js:15:14)
+62 verbose stack     at chain (/usr/lib/node_modules/npm/node_modules/slide/lib/chain.js:20:5)
+62 verbose stack     at /usr/lib/node_modules/npm/lib/install/validate-args.js:16:5
+62 verbose stack     at /usr/lib/node_modules/npm/node_modules/slide/lib/async-map.js:52:35
+62 verbose stack     at Array.forEach (native)
+62 verbose stack     at /usr/lib/node_modules/npm/node_modules/slide/lib/async-map.js:52:11
+62 verbose stack     at Array.forEach (native)
+62 verbose stack     at asyncMap (/usr/lib/node_modules/npm/node_modules/slide/lib/async-map.js:51:8)
+63 verbose cwd /home/nick/dev/nick_ecommerce
+64 error Linux 4.4.0-38-generic
+65 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "http://github.com/nkiermaier/nick_ecommerce.git" "--save"
+66 error node v6.6.0
+67 error npm  v3.10.3
+68 error code ENOSELF
+69 error Refusing to install nick_ecommerce as a dependency of itself
+70 error If you need help, you may report this error at:
+70 error     <https://github.com/npm/npm/issues>
+71 verbose exit [ 1, true ]

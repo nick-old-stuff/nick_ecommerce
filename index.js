@@ -35,5 +35,6 @@ var create_new_customer_account = function(account, callback){
 
  module.exports = {
         create_new_customer_account: create_new_customer_account,
-        create_new_stripe_customer: create_new_stripe_customer
+        create_new_stripe_customer: create_new_stripe_customer,
+        test_module: test_module
     };

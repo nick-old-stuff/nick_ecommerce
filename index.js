@@ -1,7 +1,9 @@
 var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
-
+var test_module = function(text){
+  console.log(text);
+}
 
 
 var create_new_stripe_customer = function(callback){

@@ -2,6 +2,9 @@ module.exports = function(database_connection_string){
 
   var mongoose = require('mongoose');
   mongoose.connect(database_connection_string);
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+
 
   var User = require('./models/user');
   var CreditCard = require('./models/credit_card')
@@ -22,14 +25,45 @@ module.exports = function(database_connection_string){
       });
   };
 
+  var fetch_customer = function(username, callback){
+        User.findOne({ 'username': username }, function (err, person) {
+          (function() {
+                throw_or_log.call(this, err, person, callback);
+          })();
+        })
+  }
 
-  var fetch_customer = function(){}
+
+
   var delete_customer = function(username){}
   var create_credit_card = function(){}
   var fetch_credit_card = function(){}
 
+
+    // This method is basically so the user can be lazy and not have
+  // to implement a callback and will still get logging.
+  // It checks if a call back is present.
+  // If so it throws either the error or the object to the callback.
+  // If a callback is not present  it logs those.
+  var throw_or_log = function (err, obj, callback){
+    if (callback){
+      if (err) {
+        return callback(err);
+      } else {
+        return callback(false, obj);
+      }
+    } else {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(obj)
+      }
+    }
+  }
+
   return {
-    create_customer: create_customer
+    create_customer: create_customer,
+    fetch_customer: fetch_customer
   }
 
 }

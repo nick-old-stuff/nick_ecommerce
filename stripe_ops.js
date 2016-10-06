@@ -33,7 +33,7 @@ module.exports = function(stripe_secret_key){
               completion_action.call(this,
                 err,
                 customer,
-                "New Customer Created Successfully",
+                "Stripe Customer Created Successfully",
                 callback )
             }
           )

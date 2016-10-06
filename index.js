@@ -9,15 +9,23 @@ var fetch_customer = function(){
 }
 
 
-var quick_create_customer = function(username, completion_action){
+var simple_create_customer = function(username, completion_action){
 
-  var stripe_description = "Customer for " + username;
+  var stripe_description = "Customer Object for: " + username + ".";
   var stripe_id = "";
 
   async.series([
     function(callback){
-        stripe_ops.create_customer(stripe_description, stripe_id, callback);
+        // create customer in stripe and set stripe_id variable after completion
+        stripe_ops.create_customer(
+          stripe_description,
+          function(customer){
+            stripe_id = customer.id;
+            callback();
+          });
+        //-------------------------------
       },
+    // create the object  in the database with the stripe_id variable set
     function(callback){
         data_ops.create_customer()
       }

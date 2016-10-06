@@ -28,7 +28,13 @@ var create_customer = function(username, stormpath_id, completion_action){
           stripe.id,
           stormpath_id,
           function(err){
-            if(err) return callback(err);
+            if(err) {
+              if(callback){
+                return callback(err);
+              } else{
+                console.log(err);
+              }
+            }
             callback();
           }
         )
@@ -36,7 +42,12 @@ var create_customer = function(username, stormpath_id, completion_action){
     ],
     function(err) {
       //This is the final callback
-      if(err) return console.log(err);
+      if(err) {
+        // cleanup
+        // delete stripe account
+        stripe_ops.delete_customer(stripe.id);
+        return console.log(err);
+      }
       console.log("Customer created successfully!!")
     }
   );
@@ -53,6 +64,7 @@ var fetch_credit_card = function(){}
 var test_module = function(text){
   console.log(text);
 }
+
 
 
 

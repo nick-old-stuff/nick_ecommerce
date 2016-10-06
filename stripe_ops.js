@@ -28,7 +28,7 @@ module.exports = function(stripe_secret_key){
               description: description
             },
             function(err, customer){
-              // dirty(imo) javascript hack to get it to run in this scope and allow DRY coding.
+              // dirty(imo) javascript hack to get it to run in this scope and allow DRY composition.
               // a function should have the scope of where it's USED not where it's defined amirite?
               completion_action.call(this,
                 err,
@@ -38,6 +38,11 @@ module.exports = function(stripe_secret_key){
             }
           )
         };
+
+        var delete_customer = function(){
+
+
+        }
 
 
         var fetch_customer = function(customer_id, callback){
@@ -136,27 +141,46 @@ module.exports = function(stripe_secret_key){
         // It also returns the object that was operated on.
         var completion_action = function(err,  obj, success_message, callback) {
           // asynchronously called upon completion
-          //failure: return with callback error or log it if no callback present
-          if (err) {
-            if (callback) {
-              return callback(err)
-            } else {
-              return console.log(err);
-            }
-          }
-          //success!
           console.log(success_message);
-          console.log(obj);
-          if (callback) return callback(false, obj);
+
+          // javascript hack. define/execute a function in order to get the defined scope.
+          (function() {
+            throw_or_log.call(this, err, obj, callback);
+          })();
+
+
         }
 
+        // This method is basically so the user can be lazy and not have
+        // to implement a callback and will still get logging.
+        // It checks if a call back is present.
+        // If so it throws either the error or the object to the callback.
+        // If a callback is not present  it logs those.
+        var throw_or_log = function (err, obj, callback){
+          if (callback){
+            if (err) {
+              return callback(err);
+            } else {
+              return callback(false, obj);
+            }
+          } else {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log(obj)
+            }
+          }
+        }
 
         return {
           create_customer: create_customer,
           create_customer_with_card: create_customer_with_card,
+          delete_customer: delete_customer,
           output_stripe_keys: output_stripe_keys,
           create_credit_card_token: create_credit_card_token,
-          create_test_credit_card_token: create_test_credit_card_token
+          create_test_credit_card_token: create_test_credit_card_token,
+          completion_action: completion_action,
+          throw_or_log, throw_or_log
         }
 
 };

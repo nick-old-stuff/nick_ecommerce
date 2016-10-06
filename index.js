@@ -16,7 +16,7 @@ var create_customer = function(username, stormpath_id, completion_action){
         stripe_ops.create_customer(
           stripe_description,
           function(err, customer){
-            if(err) callback(err);
+            if(err) return callback(err);
             stripe  = customer;
             callback();
           });
@@ -28,7 +28,7 @@ var create_customer = function(username, stormpath_id, completion_action){
           stripe.id,
           stormpath_id,
           function(err){
-            if(err) callback(err);
+            if(err) return callback(err);
             callback();
           }
         )

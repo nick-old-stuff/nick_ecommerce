@@ -28,13 +28,7 @@ var create_customer = function(username, stormpath_id, completion_action){
           stripe.id,
           stormpath_id,
           function(err){
-            if(err) {
-              if(callback){
-                return callback(err);
-              } else{
-                console.log(err);
-              }
-            }
+            if(err) callback(err);
             callback();
           }
         )
@@ -44,7 +38,7 @@ var create_customer = function(username, stormpath_id, completion_action){
       //This is the final callback
       if(err) {
         // cleanup
-        // delete stripe account
+        console.log("Error encountered: Rolling Back Operations");
         stripe_ops.delete_customer(stripe.id);
         return console.log(err);
       }

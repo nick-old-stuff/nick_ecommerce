@@ -22,6 +22,7 @@ module.exports = function(stripe_secret_key){
         }
 
         // if a callback is provided it  will return the asynchronous callback when done
+        // other wise it will log the new customer
         var create_customer = function(description, callback){
           stripe.customers.create(
             {
@@ -39,11 +40,19 @@ module.exports = function(stripe_secret_key){
           )
         };
 
-        var delete_customer = function(){
-
-
+        var delete_customer = function(customer_id){
+          output_msg = "Stripe Customer:" + customer_id + " Deleted Successfully";
+          stripe.customers.del(
+            customer_id,
+            function(err, confirmation) {
+              // asynchronously called
+              completion_action.call(this,
+                err,
+                confirmation,
+                output_msg
+                )
+            });
         }
-
 
         var fetch_customer = function(customer_id, callback){
           stripe.customers.retrieve(
@@ -56,6 +65,10 @@ module.exports = function(stripe_secret_key){
                   callback )
             }
           )
+        }
+
+        var fetch_all_customers = function(){
+
         }
 
         // creating with a card_token, saves an http request to add the token later. For performance.
@@ -75,7 +88,8 @@ module.exports = function(stripe_secret_key){
           );
         };
 
-        // use this to  get a token server side.  (Note: this is done client side typically.)
+        // use this to  get a token server side.
+        ///(Note: this is typically done client side on web. This method might be useful on mobile.)
         var create_credit_card_token = function(card_num, exp_month, exp_year, cvc, callback){
           stripe.tokens.create({
               card: {

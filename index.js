@@ -18,7 +18,7 @@ var create_customer = function(username, stormpath_id, completion_action){
           function(err, customer){
             if(err) return callback(err);
             stripe  = customer;
-            callback();
+            return callback();
           });
       },
     // create the object  in the database with the stripe_id variable set
@@ -29,7 +29,7 @@ var create_customer = function(username, stormpath_id, completion_action){
           stormpath_id,
           function(err){
             if(err) return callback(err);
-            callback();
+            return callback();
           }
         )
       }

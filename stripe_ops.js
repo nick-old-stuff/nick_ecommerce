@@ -23,9 +23,11 @@ module.exports = function(stripe_secret_key){
 
         // if a callback is provided it  will return the asynchronous callback when done
         var create_customer = function(description, callback){
-          stripe.customers.create({
+          stripe.customers.create(
+            {
               description: description
-            },function(err, customer){
+            },
+            function(err, customer){
               // dirty(imo) javascript hack to get it to run in this scope and allow DRY coding.
               // a function should have the scope of where it's USED not where it's defined amirite?
               completion_action.call(this,
@@ -34,20 +36,21 @@ module.exports = function(stripe_secret_key){
                 "New Customer Created Successfully",
                 callback )
             }
-          );
+          )
         };
 
 
         var fetch_customer = function(customer_id, callback){
           stripe.customers.retrieve(
-          stripe_id,
-          function(err, customer) {
-            completion_action.call(this,
-                err,
-                customer,
-                "Customer Fetched Successfully",
-                callback )
-          }
+            stripe_id,
+            function(err, customer) {
+              completion_action.call(this,
+                  err,
+                  customer,
+                  "Customer Fetched Successfully",
+                  callback )
+            }
+          )
         }
 
         // creating with a card_token, saves an http request to add the token later. For performance.
@@ -94,32 +97,38 @@ module.exports = function(stripe_secret_key){
         // If you want to add additional sources instead of replacing the existing default,
         // use the card creation API.
         var  change_default_card = function(customer_id, card_token){
-          stripe.customers.update(customer_id, {
-            source: card_token
-          }, function(err, customer) {
+          stripe.customers.update(
+            customer_id,
+            {
+              source: card_token
+            },
+            function(err, customer) {
               completion_action.call(this,
                 err,
                 customer,
                 "Customer Updated Successfully",
                 callback )
             }
-          });
+          )
+
         }
 
         var delete_card = function(customer_id, card_token){
           stripe.customers.deleteCard(
-          customer_id,
-          card_token,
-          function(err, confirmation) {
-              completion_action.call(this,
-                err,
-                confirmation,
-                "Card Deleted Successfully",
-                callback )
-          }
+            customer_id,
+            card_token,
+            function(err, confirmation) {
+                completion_action.call(this,
+                  err,
+                  confirmation,
+                  "Card Deleted Successfully",
+                  callback )
+            }
+          )
         }
 
         var delete_all_cards = function(customer_id){ /*TBI*/ }
+
 
 
         // this is just a finishing action for all of the above methods
@@ -127,15 +136,18 @@ module.exports = function(stripe_secret_key){
         // It also returns the object that was operated on.
         var completion_action = function(err,  obj, success_message, callback) {
           // asynchronously called upon completion
-          //failure: return with error
+          //failure: return with callback error or log it if no callback present
           if (err) {
-            console.log(err);
-            if (callback) return callback(err);
+            if (callback) {
+              return callback(err)
+            } else {
+              return console.log(err);
+            }
           }
           //success!
           console.log(success_message);
           console.log(obj);
-          if (callback) return callback(obj);
+          if (callback) return callback(false, obj);
         }
 
 

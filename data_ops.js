@@ -33,6 +33,19 @@ module.exports = function(database_connection_string){
         })
   }
 
+  var add_messages = function(username, amount, callback) {
+    User.findOneAndUpdate(
+      {username: username},
+      {$inc: { "account.messages_remaining" : amount }},
+      {new: true},
+      function(err, doc){
+          (function() {
+                throw_or_log.call(this, err,doc, callback);
+          })();
+      }
+    );
+
+  }
 
 
   var delete_customer = function(username){}
@@ -63,7 +76,8 @@ module.exports = function(database_connection_string){
 
   return {
     create_customer: create_customer,
-    fetch_customer: fetch_customer
+    fetch_customer: fetch_customer,
+    add_messages:add_messages
   }
 
 }

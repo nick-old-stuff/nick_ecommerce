@@ -44,7 +44,7 @@ var userSchema = new Schema({
     {
       name: { type: String, required: true },
       phone: { type: Number, required: true },
-      interval: { type: Number, required: true, default: 1 },
+      interval: { type: Number, required: true, default: 0 },
       number_sent: { type: Number, required: true, default: 0 }
     }
   ],

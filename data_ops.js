@@ -40,7 +40,7 @@ module.exports = function(database_connection_string){
       {new: true},
       function(err, doc){
           (function() {
-                throw_or_log.call(this, err,doc, callback);
+                throw_or_log.call(this, err, doc, callback);
           })();
       }
     );

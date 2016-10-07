@@ -27,13 +27,13 @@ var userSchema = new Schema({
   mailing_address:{
     street: String,
     city: String,
-    State: String,
+    state: String,
     zip: Number
   },
   shipping_address:{
     street: String,
     city: String,
-    State: String,
+    state: String,
     zip: Number
   },
   service_id:{

@@ -64,5 +64,6 @@ var test_module = function(text){
 
  module.exports = {
     create_customer: create_customer,
-    fetch_customer: data_ops.fetch_customer
+    fetch_customer: data_ops.fetch_customer,
+    add_messages: data_ops.add_messages
     };

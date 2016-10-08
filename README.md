@@ -1,7 +1,6 @@
 ## This is an general E-Commerce API for developers
 
 ### Goal
-* There doesn't appear to be many/any open source e-commerce APIs for node. There's  a lot of SDK's and full apps for ecommerce.
 * Managing a Stripe and Mongo store requires managing several asynchronous calls and state.
 * Without this libary to  create a customer involves:
   1. Creating a customer in Stripe
@@ -25,7 +24,7 @@
 * The username is used to uniquely identify a user. It has enforced uniqueness in the database.It's a parameter in most of the function calls to identify the user to perform the operation on. Not bad idea to make this a user's email.
 
 * (Please note: These docs are minimal because I'm not expecting anyone but myself to use this.
-If you want better docs please let me know: `NickKiermaier@gmail.com` .  I can also answer any questions or help troubleshoot. Also, if you see any issues that can improve on please let me know or if you want to contribute, I would love help on this.)
+If you want better docs please let me know: `NickKiermaier@gmail.com` .  I can also answer any questions or help troubleshoot. Also, if you see any issues that can improve on please let me know or if you want to contribute, I would love help on this.  There doesn't appear to be many/any open source e-commerce APIs for node. There's a lot of SDK's and full apps for ecommerce.)
 
 
 

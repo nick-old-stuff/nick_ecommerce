@@ -1,4 +1,17 @@
-var data_ops = require('../lib/data_ops')('mongodb://localhost/catfacts');
+
+var database_connection_string = 'mongodb://localhost/catfacts';
+
+// test for database connection and only open if not present
+var mongoose = require('mongoose');
+if(!mongoose.connection.readyState){
+    mongoose.connect(database_connection_string);
+    var db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error:'));
+}
+
+var data_ops = require('../lib/data_ops')(database_connection_string);
+var custom_data_ops = require('../lib/custom_data_ops')(database_connection_string);
+
 var async = require('async');
 var faker = require('faker');
 
@@ -42,7 +55,7 @@ async.series(
         " messages to user. Current messages remaining: " +
         test_user.account.messages_remaining
       );
-      data_ops.add_messages(test_user.username, random_msg_amt,
+      custom_data_ops.add_messages(test_user.username, random_msg_amt,
         function(err, user){
           if(err) return callback(err);
           test_user = user;

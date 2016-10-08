@@ -1,5 +1,5 @@
-var stripe_ops = require('./stripe_ops')(process.env.STRIPE_SECRET_KEY);
-var data_ops = require('./data_ops')('mongodb://localhost/catfacts');
+var stripe_ops = require('./lib/stripe_ops')(process.env.STRIPE_SECRET_KEY);
+var data_ops = require('./lib/data_ops')('mongodb://localhost/catfacts');
 var async = require('async');
 
 

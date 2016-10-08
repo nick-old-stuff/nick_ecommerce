@@ -1,7 +1,7 @@
 ## This is an simple E-Commerce API
 
 * (Please note: These docs are minimal because I wasn't expecting anyone but myself to really use this.
-If you have any issues please let me know: `NickKiermaier@gmail.com` .  I will answer any questions, help troubleshoot, and update the docs much more fully(er?). )
+If you have any issues please let me know: `NickKiermaier@gmail.com` .  I will answer any questions, help troubleshoot, and update the docs much more fully. )
 
 ### Goal
 * Managing a Stripe and Mongo store requires managing several asynchronous calls and state.

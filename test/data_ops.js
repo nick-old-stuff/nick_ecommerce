@@ -54,6 +54,21 @@ async.series(
       )
     },
     function(callback){
+      console.log("Credit card factory generating a card object: ");
+
+      var cc = data_ops.credit_card_factory(
+          "Visa",
+          "USA",
+          "Visa?",
+          12,
+          2020,
+          1234,
+          90210)
+      console.log("Credit Card Object Generated successfully:" + cc);
+      callback();
+
+    },
+    function(callback){
       console.log("Deleting User:" + test_user.username);
       data_ops.delete_customer(test_user.username,
         function(err, doc){

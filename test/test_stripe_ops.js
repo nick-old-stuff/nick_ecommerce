@@ -21,7 +21,7 @@ async.series([
       )
     },
     function(callback){
-      console.log("Fetching test customer, should equal:" + test_cust.id);
+      console.log("Fetching a customer, should equal:" + test_cust.id);
       stripe_ops.fetch_customer(
         test_cust.id,
         function(err, customer){

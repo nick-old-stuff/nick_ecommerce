@@ -1,8 +1,5 @@
 ## This is an simple E-Commerce API
 
-* (Please note: These docs are minimal because I wasn't expecting anyone but myself to really use this.
-If you have any issues please let me know: `NickKiermaier@gmail.com` .  I will answer any questions, help troubleshoot, and update the docs much more fully. )
-
 ### Goal
 * Managing a Stripe and Mongo store requires managing several asynchronous calls and state.
 * Without this libary to  create a customer involves:
@@ -18,6 +15,17 @@ If you have any issues please let me know: `NickKiermaier@gmail.com` .  I will a
 * A Stripe account and secret key
 * A running Mongo database
 
-## To use
+### To use
 * In index.js you just put your Stripe account and Secret Key information where it's indicated.
 * Thats it, it should work!(?)
+* oh also, `npm install`
+
+### Key points
+* The username is used to uniquely identify a user. It has enforced uniqueness in the database.It's a parameter in most of the function calls to identify the user to perform the operation on. Not bad idea to make this a user's email.
+
+* (Please note: These docs are minimal because I'm not expecting anyone but myself to use this.
+If you want better docs please let me know: `NickKiermaier@gmail.com` .  I can also answer any questions or help troubleshoot. )
+
+
+
+

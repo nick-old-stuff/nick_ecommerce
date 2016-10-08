@@ -1,4 +1,6 @@
+// put stripe  secret key in the parameter here
 var stripe_ops = require('./lib/stripe_ops')(process.env.STRIPE_SECRET_KEY);
+// put mongo databases url here along with the database as a slash parameter
 var data_ops = require('./lib/data_ops')('mongodb://localhost/catfacts');
 var async = require('async');
 

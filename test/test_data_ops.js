@@ -1,4 +1,4 @@
-var data_ops = require('../data_ops')('mongodb://localhost/catfacts');
+var data_ops = require('../lib/data_ops')('mongodb://localhost/catfacts');
 var async = require('async');
 var faker = require('faker');
 
@@ -55,18 +55,20 @@ async.series(
     },
     function(callback){
       console.log("Credit card factory generating a card object: ");
-
-      var cc = data_ops.credit_card_factory(
+      data_ops.credit_card_factory(
           "Visa",
           "USA",
           "Visa?",
           12,
           2020,
-          1234,
-          90210)
-      console.log("Credit Card Object Generated successfully:" + cc);
-      callback();
-
+          123,
+          90210,
+          function(err, cc){
+            if(err) return callback(err);
+            console.log("Credit Card Object Generated successfully:" + cc);
+            callback();
+          }
+      )
     },
     function(callback){
       console.log("Deleting User:" + test_user.username);

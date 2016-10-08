@@ -3,10 +3,11 @@ var async = require('async');
 var faker = require('faker');
 
 
-
+// module wide data
 var test_user = {};
 var test_card= {};
 
+// fake test data
 var username = faker.internet.email();
 var stripe_id = faker.finance.bitcoinAddress();
 var stormpath_id = faker.finance.bitcoinAddress();
@@ -35,7 +36,6 @@ async.series(
           callback();
         }
       );
-
     },
     function(callback){
       console.log("Adding " + random_msg_amt +
@@ -77,15 +77,36 @@ async.series(
         function(err, result){
           if(err) return callback(err);
           console.log(result);
+          callback()
         }
       )
+    },
+    function(callback){
+      console.log("Removing default credit card");
+      data_ops.remove_default_credit_card(test_user.username,
+        function(err, result){
+          if(err) return callback(err);
+          console.log(result);
+          callback()
+        }
+      )
+    },
+    function(callback){
+      console.log("Fetching a user");
+      data_ops.fetch_customer(test_user.username,
+        function(err, user){
+          if(err) return callback(err);
+          console.log("Customer fetched successfully, mongo id: " + user)
+          callback();
+        }
+      );
     },
     function(callback){
       console.log("Deleting User:" + test_user.username);
       data_ops.delete_customer(test_user.username,
         function(err, doc){
           if(err) return callback(err);
-          console.log("Deletion confirmation message: " + doc.result)
+          console.log("Deletion confirmation message: " + doc)
         }
       )
     }

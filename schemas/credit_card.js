@@ -1,9 +1,10 @@
 // grab the things we need
 var mongoose = require('mongoose');
+
 var Schema = mongoose.Schema;
 
 // create a schema
-var CreditCardSchema = new Schema({
+var credit_card_schema = new Schema({
   brand: {type: String, required: true },
   country: {type: String, required: true },
   exp_month: {type: Number, required: true },
@@ -11,13 +12,17 @@ var CreditCardSchema = new Schema({
   type: {type: String, required: true },
   last4: {type: Number, required: true },
   zip: {type: Number, required: true },
-  created_at: Date,
+  stripe_id: String,
+  created_at: { type: Date, default: Date() },
   updated_at: Date
 });
 
-// the schema is useless so far
-// we need to create a model using it
-var CreditCard = mongoose.model('CreditCard', CreditCardSchema);
+
+var credit_card_model =  mongoose.model('CreditCard', credit_card_schema);
+
 
 // make this available to our users in our Node applications
-module.exports = CreditCard;
+module.exports = {
+    schema: credit_card_schema,
+    model: credit_card_model
+  }

@@ -48,16 +48,51 @@ var create_customer = function(username, stormpath_id, completion_action){
 }
 
 
+// Stripe/DB ops
+var new_default_card = function(username, stripe_customer_id, stripe_card_token){
+  var stripe_card_info = "";
 
-
-
-var fetch_customer = function(){}
-var update_credit_card = function() {}
-var update_customer = function(){}
-var fetch_credit_card = function(){}
-var test_module = function(text){
-  console.log(text);
+  async.series([
+    function(callback){
+        // create customer in stripe and set stripe_id variable after completion
+        stripe_ops.new_default_card(
+          stripe_customer_id,
+          stripe_card_token,
+          function(err, customer){
+            if(err) return callback(err);
+            stripe_card_info  = customer;
+            return callback();
+          });
+      },
+    // create the object  in the database with the stripe_id variable set
+    function(callback){
+        data_ops.create_customer(
+          username,
+          stripe.id,
+          stormpath_id,
+          function(err){
+            if(err) return callback(err);
+            return callback();
+          }
+        )
+      }
+    ],
+    function(err) {
+      //This is the final callback
+      if(err) {
+        // cleanup
+        console.log("Error encountered: Rolling Back Operations");
+        stripe_ops.delete_customer(stripe.id);
+        return console.log(err);
+      }
+      console.log("Customer created successfully!!")
+    }
+  );
 }
+
+var delete_default_card = function(username){}
+var add_messages = function(username, money_amount){}
+
 
 
 

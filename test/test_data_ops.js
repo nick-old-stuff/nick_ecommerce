@@ -5,7 +5,7 @@ var faker = require('faker');
 
 
 var test_user = {};
-
+var test_card= {};
 
 var username = faker.internet.email();
 var stripe_id = faker.finance.bitcoinAddress();
@@ -66,8 +66,18 @@ async.series(
           function(err, cc){
             if(err) return callback(err);
             console.log("Credit Card Object Generated successfully:" + cc);
+            test_card = cc;
             callback();
           }
+      )
+    },
+    function(callback){
+      console.log("Adding a default credit card");
+      data_ops.update_default_credit_card(test_user.username, cc,
+        function(err, result){
+          if(err) return callback(err);
+          console.log(result);
+        }
       )
     },
     function(callback){

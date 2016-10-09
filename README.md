@@ -1,3 +1,5 @@
+# This is extremely deprecated.  It's all callbacks and nightmares.
+
 ## This is an general E-Commerce API for developers
 
 ### Goal

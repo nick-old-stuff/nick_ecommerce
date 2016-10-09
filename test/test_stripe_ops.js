@@ -69,6 +69,7 @@ async.series([
         function(err, customer){
           if(err) return callback(err);
           console.log( "Customer: " + customer.id + " default source set to: " + customer.default_source );
+          console.log("Credit Card Created: " + JSON.stringify(customer.sources.data, null, '\t'))
           test_cust = customer;
           callback();
         }

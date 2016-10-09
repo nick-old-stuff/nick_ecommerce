@@ -9,7 +9,6 @@ var credit_card_schema = new Schema({
   country: {type: String, required: true },
   exp_month: {type: Number, required: true },
   exp_year: {type: Number, required: true },
-  type: {type: String, required: true },
   last4: {type: Number, required: true },
   zip: {type: Number, required: true },
   stripe_id: {type: String, required: true },

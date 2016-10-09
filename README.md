@@ -19,7 +19,7 @@
 ### To use
 * In index.js you just put your Stripe account and Secret Key information where it's indicated.
 * `npm install`
-* Add your custom defined methods to the index.js module.imports.
+* Add your custom defined methods to the index.js: require and to module.imports. (see the catfacts example in the file.)
 * Thats it, it should work!(?)
 
 ### Key points
@@ -35,7 +35,7 @@
 
 * The data models for your mongo database documents are stored in the schema folder.  You can view them to visualize your data objects and the shape of your databases.
 
-* Note: I've extended the base functionality of this app with my own custom API which is probably the best way to handle this.
+* See the catfacts folder for examples of extending the functionality of the base library with your own custom code.
 
 * (Please note: These docs are minimal because I'm not expecting anyone but myself to use this.
 If you want better docs please let me know: `NickKiermaier@gmail.com` .  I can also answer any questions or help troubleshoot. Also, if you see any issues that can improve on please let me know or if you want to contribute, I would love help on this.  There doesn't appear to be many/any open source e-commerce APIs for node. There's a lot of SDK's and full apps for ecommerce.)

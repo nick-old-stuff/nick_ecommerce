@@ -1,7 +1,6 @@
 
 var database_connection_string = 'mongodb://localhost/catfacts';
 var data_ops = require('../lib/data_ops')(database_connection_string);
-var custom_data_ops = require('../lib/custom_data_ops')(database_connection_string);
 var async = require('async');
 var faker = require('faker');
 

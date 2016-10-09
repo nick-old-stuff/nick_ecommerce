@@ -24,9 +24,9 @@
 
 ### Key points
 * Directories
-1. -lib: contains all the operations to perform on the models. The main_ops has all of the async chains.
-2. - schemas: contains all of the data models
-3. - test:  contains some semblance of tests for all of the operations in lib.
+  1. -lib: contains all the operations to perform on the models. The main_ops has all of the async chains.
+  2. - schemas: contains all of the data models
+  3. - test:  contains some semblance of tests for all of the operations in lib.
 
 
 * The username is used to uniquely identify a user. It has enforced uniqueness in the database.It's a parameter in most of the function calls to identify the user to perform the operation on. Not bad idea to make this a user's email.

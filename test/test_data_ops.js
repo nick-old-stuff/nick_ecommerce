@@ -39,55 +39,6 @@ async.series(
       );
     },
     function(callback){
-      console.log("Credit card factory generating a card object: ");
-      data_ops.credit_card_factory(
-          "Visa",
-          "USA",
-          "Visa?",
-          12,
-          2020,
-          123,
-          90210,
-          stripe_id,
-          function(err, cc){
-            if(err) return callback(err);
-            console.log("Credit Card Object Generated successfully:" + cc);
-            test_card = cc;
-            callback();
-          }
-      )
-    },
-    function(callback){
-      console.log("Adding a default credit card");
-      data_ops.update_default_credit_card(test_user.username, cc,
-        function(err, result){
-          if(err) return callback(err);
-          console.log(result);
-          callback()
-        }
-      )
-    },
-    function(callback){
-      console.log("Removing default credit card");
-      data_ops.remove_default_credit_card(test_user.username,
-        function(err, result){
-          if(err) return callback(err);
-          console.log(result);
-          callback()
-        }
-      )
-    },
-    function(callback){
-      console.log("Fetching a user");
-      data_ops.fetch_customer(test_user.username,
-        function(err, user){
-          if(err) return callback(err);
-          console.log("Customer fetched successfully, mongo id: " + user)
-          callback();
-        }
-      );
-    },
-    function(callback){
       console.log("Deleting User:" + test_user.username);
       data_ops.delete_customer(test_user.username,
         function(err, doc){

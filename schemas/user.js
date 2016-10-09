@@ -2,8 +2,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var credit_card_schema = require('./credit_card').schema;
-
 
 
 // set the discriminator key
@@ -46,8 +44,6 @@ var user_schema = new Schema({
       service_id:{
         stripe: { type: String, required: true },
       },
-      default_credit_card: credit_card_schema,
-      credit_cards:[credit_card_schema],
       created_at: { type: Date, default: Date() },
       updated_at: Date
     }, options);

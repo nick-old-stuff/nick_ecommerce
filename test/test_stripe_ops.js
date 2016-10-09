@@ -76,6 +76,17 @@ async.series([
       )
     },
     function(callback){
+      console.log("Fetching test customer, default_source(the credit card) should equal: " + test_cust.default_source);
+      stripe_ops.fetch_customer(
+        test_cust.id,
+        function(err, customer){
+          if (err) return callback(err);
+          console.log("Customer fetched.  default_source = " + test_cust.default_source);
+          callback()
+        }
+      )
+    },
+    function(callback){
       console.log("Deleting the card from customer: " + test_cust.id);
       stripe_ops.delete_card(
         test_cust.id,
@@ -99,17 +110,17 @@ async.series([
         }
       )
     },
-    // function(callback){
-    //   console.log("Deleting a customer");
-    //   stripe_ops.delete_customer(
-    //     test_cust_id,
-    //     function(err, confirmation){
-    //       if(err) return callback(err);
-    //       console.log(confirmation);
-    //       callback();
-    //     }
-    //   )
-    // }
+    function(callback){
+      console.log("Deleting a customer");
+      stripe_ops.delete_customer(
+        test_cust.id,
+        function(err, confirmation){
+          if(err) return callback(err);
+          console.log(confirmation);
+          callback();
+        }
+      )
+    }
   ],
   function(err) {
     //This is the final callback

@@ -28,6 +28,10 @@ module.exports = function(database_connection_string){
     );
   }
 
+  var subtract_messages = function(username, message_amount, callback){
+    //TBI
+  }
+
   return {
     add_messages: add_messages
   }

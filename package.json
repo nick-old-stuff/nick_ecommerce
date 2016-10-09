@@ -1,7 +1,7 @@
 {
-  "name": "nick_ecommerce",
+  "name": "mutant_ecommerce",
   "version": "1.0.0",
-  "description": "Ecommerce library",
+  "description": "General Developer Ecommerce API",
   "main": "index.js",
   "scripts": {
     "test": "test"

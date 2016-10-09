@@ -18,8 +18,9 @@
 
 ### To use
 * In index.js you just put your Stripe account and Secret Key information where it's indicated.
+* `npm install`
+* Add your custom defined methods to the index.js module.imports.
 * Thats it, it should work!(?)
-* oh also, `npm install`
 
 ### Key points
 * Directories

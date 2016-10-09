@@ -1,17 +1,7 @@
 
 var database_connection_string = 'mongodb://localhost/catfacts';
-
-// test for database connection and only open if not present
-var mongoose = require('mongoose');
-if(!mongoose.connection.readyState){
-    mongoose.connect(database_connection_string);
-    var db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
-}
-
 var data_ops = require('../lib/data_ops')(database_connection_string);
 var custom_data_ops = require('../lib/custom_data_ops')(database_connection_string);
-
 var async = require('async');
 var faker = require('faker');
 

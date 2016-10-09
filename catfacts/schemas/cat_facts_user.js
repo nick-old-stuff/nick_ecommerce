@@ -1,4 +1,6 @@
-// EXTENSION P
+// EXTENSION
+// This is accomplished through Mongoose discriminators
+// NOTE: It still save to the same Collection of the Model that it is extending!!!!
 
 // grab the things we need
 var mongoose = require('mongoose');
@@ -32,10 +34,10 @@ var cat_facts_user_schema = new mongoose.Schema({
 }, options)
 
 
-// create intermediate model
+// create intermediate Base model
 var BaseUser = User.model
 
-// create final model which is the union of the two models
+// create final model which is the union of the Base model and  the  cat_facts schema
 var cat_facts_user_model = BaseUser.discriminator('CatFactsUser', cat_facts_user_schema );
 
 

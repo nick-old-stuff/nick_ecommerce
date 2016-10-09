@@ -1,0 +1,1 @@
+var create_stormpath_customer = function(username, stormpath_id, completion_action){ /*TBI*/}

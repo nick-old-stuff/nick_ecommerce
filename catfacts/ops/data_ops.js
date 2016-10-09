@@ -1,6 +1,5 @@
 // These are operations pertaining to my specific app.
-// Not part of the framework and I need to factor out at some point.(Must also delete from tests as well.)
-// Typically will also tie into  a custom schema.
+// Will define your custom application specific operations here.
 
 module.exports = function(database_connection_string){
 
@@ -16,8 +15,6 @@ module.exports = function(database_connection_string){
   var CreditCard = require('../schemas/credit_card').model;
   var util = require('./util')
 
-
-  var add_stormpath_id = function(){ /*TBI*/}
 
 
   var add_messages = function(username, message_amount, callback) {

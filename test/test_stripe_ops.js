@@ -1,4 +1,4 @@
-var stripe_ops = require('../stripe_ops')(process.env.STRIPE_SECRET_KEY);
+var stripe_ops = require('../lib/stripe_ops')(process.env.STRIPE_SECRET_KEY);
 var async = require('async');
 
 

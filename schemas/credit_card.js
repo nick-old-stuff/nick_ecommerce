@@ -12,7 +12,7 @@ var credit_card_schema = new Schema({
   type: {type: String, required: true },
   last4: {type: Number, required: true },
   zip: {type: Number, required: true },
-  stripe_id: String,
+  stripe_id: {type: String, required: true },
   created_at: { type: Date, default: Date() },
   updated_at: Date
 });

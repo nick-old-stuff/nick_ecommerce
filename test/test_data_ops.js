@@ -23,7 +23,6 @@ var test_card= {};
 // fake test data
 var username = faker.internet.email();
 var stripe_id = faker.finance.bitcoinAddress();
-var stormpath_id = faker.finance.bitcoinAddress();
 var random_msg_amt = faker.random.number()
 
 
@@ -31,7 +30,7 @@ async.series(
   [
     function(callback) {
       console.log("Creating a user");
-      data_ops.create_customer(username, stripe_id, stormpath_id,
+      data_ops.create_customer(username, stripe_id,
         function(err, user){
           if(err)return callback(err);
           console.log("Customer Created successfully, mongo id: " + user.id);
@@ -51,22 +50,6 @@ async.series(
       );
     },
     function(callback){
-      console.log("Adding " + random_msg_amt +
-        " messages to user. Current messages remaining: " +
-        test_user.account.messages_remaining
-      );
-      custom_data_ops.add_messages(test_user.username, random_msg_amt,
-        function(err, user){
-          if(err) return callback(err);
-          test_user = user;
-          console.log("Messages added successfully. New messages remaining: " +
-            test_user.account.messages_remaining
-          );
-          callback();
-        }
-      )
-    },
-    function(callback){
       console.log("Credit card factory generating a card object: ");
       data_ops.credit_card_factory(
           "Visa",
@@ -76,6 +59,7 @@ async.series(
           2020,
           123,
           90210,
+          stripe_id,
           function(err, cc){
             if(err) return callback(err);
             console.log("Credit Card Object Generated successfully:" + cc);

@@ -4,6 +4,11 @@ var Schema = mongoose.Schema;
 
 var credit_card_schema = require('./credit_card').schema;
 
+
+
+// set the discriminator key
+var options = {discriminatorKey: 'kind'};
+
 // create a schema
 // required with no defaults: username, service_id.stripe
 // note: may need to be refactored as use requirements get more complex,
@@ -39,27 +44,13 @@ var user_schema = new Schema({
         zip: Number
       },
       service_id:{
-        stripe: { type: String },
-        stormpath: {type: String}
-      },
-      recipients: [
-        {
-          name: { type: String, required: true },
-          phone: { type: Number, required: true },
-          interval: { type: Number, required: true, default: 0 },
-          number_sent: { type: Number, required: true, default: 0 }
-        }
-      ],
-      account:{
-        messages_used: { type: Number, default: 0 },
-        messages_remaining: { type: Number, default: 0 },
-        amount_spent: { type: Number, default: 0 }
+        stripe: { type: String, required: true },
       },
       default_credit_card: credit_card_schema,
       credit_cards:[credit_card_schema],
       created_at: { type: Date, default: Date() },
       updated_at: Date
-    });
+    }, options);
 
 var user_model =  mongoose.model('User', user_schema );
 
